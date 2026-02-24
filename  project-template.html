@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.cdnfonts.com/css/nexa" rel="stylesheet">
+  <title>Project Title | Marcus Holden</title>
+  <style>
+    :root {
+      --navy: #0a1628;
+      --navy-mid: #112244;
+      --navy-light: #1a3a6e;
+      --gold: #DAA520;
+      --gold-light: #f0c040;
+      --white: #ffffff;
+      --off-white: #f8f8f4;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Nexa', sans-serif; font-weight: 400; background: var(--off-white); color: var(--navy); }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--navy); display: flex; align-items: center;
+      justify-content: space-between; padding: 0 48px; height: 80px;
+      border-bottom: 2px solid var(--gold);
+    }
+    .nav-logo { text-decoration: none; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { color: var(--white); text-decoration: none; font-family: 'Nexa', sans-serif; font-size: 0.88rem; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--gold); transition: all 0.3s; }
+
+    /* ===== HERO ===== */
+    .project-hero {
+      min-height: 60vh;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, var(--navy-light) 100%);
+      display: flex; align-items: flex-end;
+      padding: 120px 80px 72px;
+      position: relative; overflow: hidden;
+    }
+    .project-hero::before { content: ''; position: absolute; width: 600px; height: 600px; border-radius: 50%; border: 1px solid rgba(218,165,32,0.08); top: -150px; right: -150px; }
+    .hero-corner { position: absolute; width: 60px; height: 60px; bottom: 48px; right: 80px; border-bottom: 2px solid var(--gold); border-right: 2px solid var(--gold); opacity: 0.4; }
+
+    .project-hero-content { z-index: 2; max-width: 800px; }
+    .back-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: var(--gold); text-decoration: none;
+      font-family: 'Nexa', sans-serif; font-size: 0.8rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      margin-bottom: 28px; transition: gap 0.2s;
+    }
+    .back-link:hover { gap: 12px; }
+    .project-category-tag {
+      display: inline-block; font-size: 0.75rem; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--gold);
+      border: 1px solid var(--gold); padding: 5px 16px; margin-bottom: 20px;
+    }
+    .project-hero h1 {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      color: var(--white); line-height: 1.05; margin-bottom: 20px;
+    }
+    .project-hero h1 span { color: var(--gold); }
+    .project-meta {
+      display: flex; gap: 40px; flex-wrap: wrap; margin-top: 32px;
+    }
+    .meta-item { }
+    .meta-label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 4px; }
+    .meta-value { font-size: 0.95rem; color: var(--white); }
+
+    /* ===== COVER IMAGE ===== */
+    .project-cover {
+      width: 100%; height: 500px;
+      background: var(--navy-mid);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .project-cover-placeholder {
+      color: rgba(218,165,32,0.2); font-size: 1rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+    }
+    .project-cover img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+
+    /* ===== CONTENT SECTIONS ===== */
+    .project-content { max-width: 900px; margin: 0 auto; padding: 80px 48px; }
+
+    .content-block { margin-bottom: 72px; }
+    .content-block-label {
+      font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 16px;
+    }
+    .content-block h2 {
+      font-size: 2rem; color: var(--navy); margin-bottom: 20px; line-height: 1.2;
+    }
+    .content-block p {
+      color: #4a5568; line-height: 1.9; font-size: 1rem; margin-bottom: 16px;
+    }
+    .gold-rule { width: 50px; height: 2px; background: var(--gold); margin-bottom: 28px; }
+
+    /* Problem / Solution split */
+    .problem-solution {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 32px; margin-bottom: 72px;
+    }
+    .ps-card {
+      padding: 36px 32px;
+      border-top: 3px solid var(--gold);
+    }
+    .ps-card.problem { background: var(--navy); }
+    .ps-card.solution { background: var(--white); border: 1px solid #e5e7eb; border-top: 3px solid var(--gold); }
+    .ps-label {
+      font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 12px;
+    }
+    .ps-card.problem h3 { color: var(--white); font-size: 1.3rem; margin-bottom: 14px; }
+    .ps-card.solution h3 { color: var(--navy); font-size: 1.3rem; margin-bottom: 14px; }
+    .ps-card.problem p { color: rgba(255,255,255,0.7); line-height: 1.8; }
+    .ps-card.solution p { color: #4a5568; line-height: 1.8; }
+
+    /* Tools */
+    .tools-grid {
+      display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px;
+    }
+    .tool-tag {
+      background: var(--navy); color: var(--gold);
+      padding: 10px 20px; font-size: 0.82rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+
+    /* Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px; margin-top: 8px;
+    }
+    .gallery-item {
+      aspect-ratio: 4/3;
+      background: var(--navy-mid);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; position: relative;
+    }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+    .gallery-placeholder {
+      color: rgba(218,165,32,0.25); font-size: 0.8rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+    }
+
+    /* ===== NEXT PROJECT NAV ===== */
+    .project-nav {
+      background: var(--navy);
+      display: grid; grid-template-columns: 1fr 1fr;
+      border-top: 2px solid var(--gold);
+    }
+    .project-nav-item {
+      padding: 48px; text-decoration: none;
+      transition: background 0.2s;
+      border-right: 1px solid rgba(255,255,255,0.05);
+    }
+    .project-nav-item:hover { background: var(--navy-mid); }
+    .project-nav-item:last-child { border-right: none; text-align: right; }
+    .nav-direction { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 8px; }
+    .nav-project-title { font-size: 1.1rem; color: var(--gold); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #060e1a; padding: 36px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid rgba(218,165,32,0.2); flex-wrap: wrap; gap: 16px;
+    }
+    .footer-logo { font-size: 1.1rem; font-weight: bold; color: var(--gold); letter-spacing: 0.08em; margin-bottom: 4px; }
+    .footer-logo span { color: rgba(255,255,255,0.5); }
+    .footer-tagline { font-size: 0.75rem; font-style: italic; color: rgba(255,255,255,0.3); }
+    .footer-copy { font-family: 'Nexa', sans-serif; font-size: 0.78rem; color: rgba(255,255,255,0.3); }
+    .footer-links { display: flex; gap: 24px; list-style: none; }
+    .footer-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .project-hero { padding: 120px 32px 56px; }
+      .project-content { padding: 60px 24px; }
+      .problem-solution { grid-template-columns: 1fr; }
+      .project-nav { grid-template-columns: 1fr; }
+      .project-nav-item:last-child { text-align: left; border-top: 1px solid rgba(255,255,255,0.05); border-right: none; }
+      footer { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 600px) {
+      nav { padding: 0 24px; }
+      .nav-links {
+        display: none; flex-direction: column;
+        position: fixed; top: 80px; left: 0; right: 0;
+        background: var(--navy); padding: 24px 32px; gap: 20px;
+        border-bottom: 2px solid var(--gold); z-index: 99;
+      }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="marcus-holden-portfolio.html" class="nav-logo">
+    <img src="MA_logo_transparent.png" style="height: 60px; width: auto;" alt="Logo" />
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="marcus-holden-portfolio.html#home" onclick="closeMenu()">Home</a></li>
+    <li><a href="marcus-holden-portfolio.html#about" onclick="closeMenu()">About</a></li>
+    <li><a href="marcus-holden-portfolio.html#portfolio" onclick="closeMenu()">Portfolio</a></li>
+    <li><a href="marcus-holden-portfolio.html#contact" onclick="closeMenu()">Contact</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="project-hero">
+  <div class="hero-corner"></div>
+  <div class="project-hero-content">
+    <a href="marcus-holden-portfolio.html#portfolio" class="back-link">← Back to Portfolio</a>
+    <div class="project-category-tag">UX Design</div>
+    <h1>Personal <span>Identity</span> System</h1>
+    <div class="project-meta">
+      <div class="meta-item">
+        <div class="meta-label">Role</div>
+        <div class="meta-value">UX / Brand Designer</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Year</div>
+        <div class="meta-value">2026</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Type</div>
+        <div class="meta-value">Branding & Identity</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COVER IMAGE -->
+<div class="project-cover">
+  <!-- Replace with: <img src="your-cover-image.jpg" alt="Project Cover" /> -->
+  <div class="project-cover-placeholder">Project Cover Image</div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="project-content">
+
+  <!-- OVERVIEW -->
+  <div class="content-block">
+    <div class="content-block-label">Overview</div>
+    <div class="gold-rule"></div>
+    <h2>Project Overview</h2>
+    <p>This project involved designing a complete personal brand identity system from the ground up. The goal was to create a visual language that communicates professionalism, creativity, and a UX-first mindset across all touchpoints.</p>
+    <p>Every element — from the logo mark to the color palette to the typography — was chosen with intention, ensuring the brand feels cohesive whether it appears on a business card, a website, or a social media banner.</p>
+  </div>
+
+  <!-- PROBLEM / SOLUTION -->
+  <div class="content-block-label">Challenge & Response</div>
+  <div class="gold-rule"></div>
+  <div class="problem-solution">
+    <div class="ps-card problem">
+      <div class="ps-label">The Problem</div>
+      <h3>What needed solving?</h3>
+      <p>Without a cohesive brand identity, a designer's work can feel disconnected — great individually but lacking the consistency that builds trust and recognition with potential clients or employers.</p>
+    </div>
+    <div class="ps-card solution">
+      <div class="ps-label">The Solution</div>
+      <h3>How I solved it</h3>
+      <p>Developed a unified identity system with a custom logo, defined color palette, and typographic guidelines that work across digital and print formats — all grounded in UX principles of clarity and intent.</p>
+    </div>
+  </div>
+
+  <!-- TOOLS -->
+  <div class="content-block">
+    <div class="content-block-label">Tools & Technologies</div>
+    <div class="gold-rule"></div>
+    <h2>Built With</h2>
+    <div class="tools-grid">
+      <span class="tool-tag">Adobe Illustrator</span>
