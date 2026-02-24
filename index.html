@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.cdnfonts.com/css/nexa" rel="stylesheet">
+  <title>Marcus Holden | Portfolio</title>
+  <style>
+    :root {
+      --navy: #0a1628;
+      --navy-mid: #112244;
+      --navy-light: #1a3a6e;
+      --gold: #DAA520;
+      --gold-light: #f0c040;
+      --white: #ffffff;
+      --off-white: #f8f8f4;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+  body { font-family: 'Nexa', sans-serif; font-weight: 400; background: var(--off-white); color: var(--navy); }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--navy); display: flex; align-items: center;
+      justify-content: space-between; padding: 0 48px; height: 68px;
+      border-bottom: 2px solid var(--gold);
+    }
+    .nav-logo { font-size: 1.3rem; font-weight: bold; color: var(--gold); letter-spacing: 0.08em; text-decoration: none; }
+    .nav-logo span { color: var(--white); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { color: var(--white); text-decoration: none; font-family: 'Arial', sans-serif; font-size: 0.88rem; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+
+    #home {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, var(--navy-light) 100%);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden; padding-top: 68px;
+    }
+    #home::before { content: ''; position: absolute; width: 700px; height: 700px; border-radius: 50%; border: 1px solid rgba(218,165,32,0.1); top: -150px; right: -200px; }
+    #home::after { content: ''; position: absolute; width: 450px; height: 450px; border-radius: 50%; border: 1px solid rgba(218,165,32,0.07); bottom: -100px; left: -120px; }
+    .hero-corner-tl, .hero-corner-br { position: absolute; width: 80px; height: 80px; z-index: 2; }
+    .hero-corner-tl { top: 90px; left: 48px; border-top: 2px solid var(--gold); border-left: 2px solid var(--gold); opacity: 0.4; }
+    .hero-corner-br { bottom: 48px; right: 48px; border-bottom: 2px solid var(--gold); border-right: 2px solid var(--gold); opacity: 0.4; }
+    .hero-inner { text-align: center; z-index: 2; padding: 60px 24px; }
+    .hero-tag { display: inline-block; font-family: 'Arial', sans-serif; font-size: 0.78rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold); padding: 6px 20px; margin-bottom: 28px; }
+    .hero-name { font-size: clamp(3rem, 8vw, 6.5rem); color: var(--white); line-height: 1.05; margin-bottom: 8px; }
+    .hero-name .highlight { color: var(--gold); }
+    .hero-subtitle { font-family: 'Arial', sans-serif; font-size: clamp(0.85rem, 1.8vw, 1rem); color: rgba(255,255,255,0.55); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 20px; }
+    .hero-slogan { font-size: clamp(1.1rem, 2.5vw, 1.55rem); color: var(--gold-light); font-style: italic; margin-bottom: 40px; opacity: 0.92; }
+    .hero-divider { width: 60px; height: 2px; background: var(--gold); margin: 0 auto 44px; }
+    .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary { background: var(--gold); color: var(--navy); padding: 14px 36px; font-family: 'Arial', sans-serif; font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: bold; text-decoration: none; transition: background 0.2s, transform 0.2s; display: inline-block; }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-outline { border: 1.5px solid var(--gold); color: var(--gold); padding: 14px 36px; font-family: 'Arial', sans-serif; font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; transition: all 0.2s; display: inline-block; }
+    .btn-outline:hover { background: var(--gold); color: var(--navy); transform: translateY(-2px); }
+
+    section { padding: 100px 48px; }
+    .section-header { text-align: center; margin-bottom: 64px; }
+    .section-eyebrow { font-family: 'Arial', sans-serif; font-size: 0.75rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+    .section-title { font-size: clamp(2rem, 4vw, 3rem); color: var(--navy); line-height: 1.15; margin-bottom: 16px; }
+    .section-rule { width: 50px; height: 2px; background: var(--gold); margin: 0 auto; }
+
+    #about { background: var(--white); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 72px; max-width: 1100px; margin: 0 auto; align-items: center; }
+    .about-img-wrap { position: relative; }
+    .about-img-box { width: 100%; aspect-ratio: 3/4; background: var(--navy-mid); display: flex; align-items: center; justify-content: center; position: relative; overflow: visible; }
+    .about-img-box::after { content: ''; position: absolute; bottom: -14px; right: -14px; width: 100%; height: 100%; border: 2px solid var(--gold); z-index: 0; pointer-events: none; }
+    .about-img-initials { font-size: 5rem; font-family: 'Georgia', serif; color: rgba(218,165,32,0.35); font-weight: bold; position: relative; z-index: 1; }
+    .about-text .eyebrow { font-family: 'Arial', sans-serif; font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+    .about-text h2 { font-size: 2.2rem; color: var(--navy); margin-bottom: 10px; line-height: 1.2; }
+    .about-slogan { font-size: 1.05rem; color: var(--gold); font-style: italic; margin-bottom: 22px; border-left: 3px solid var(--gold); padding-left: 14px; }
+    .about-text p { color: #4a5568; line-height: 1.85; margin-bottom: 18px; }
+    .about-skills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+    .skill-tag { background: var(--navy); color: var(--gold); padding: 7px 16px; font-family: 'Arial', sans-serif; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; }
+
+    #portfolio { background: var(--off-white); }
+    .portfolio-tabs { display: flex; justify-content: center; margin-bottom: 56px; flex-wrap: wrap; }
+    .tab-btn { padding: 12px 28px; background: none; border: 1.5px solid var(--navy); color: var(--navy); font-family: 'Arial', sans-serif; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; margin: -1px; }
+    .tab-btn.active, .tab-btn:hover { background: var(--navy); color: var(--gold); }
+    .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; max-width: 1200px; margin: 0 auto; }
+    .portfolio-card { background: var(--white); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; }
+    .portfolio-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(10,22,40,0.15); }
+    .card-img { width: 100%; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; }
+    .card-accent-1 .card-img { background: linear-gradient(135deg, #0a1628, #1a3a6e); }
+    .card-accent-2 .card-img { background: linear-gradient(135deg, #112244, #0a2a4a); }
+    .card-accent-3 .card-img { background: linear-gradient(135deg, #0d1f3c, #1e3a5f); }
+    .card-accent-4 .card-img { background: linear-gradient(135deg, #0a1628, #243b55); }
+    .card-img-icon { width: 56px; height: 56px; border: 1.5px solid rgba(218,165,32,0.4); display: flex; align-items: center; justify-content: center; color: rgba(218,165,32,0.6); font-size: 1.4rem; }
+    .card-body { padding: 22px 24px; border-top: 2px solid var(--gold); }
+    .card-category { font-family: 'Arial', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+    .card-title { font-size: 1.05rem; color: var(--navy); margin-bottom: 8px; }
+    .card-desc { font-family: 'Arial', sans-serif; font-size: 0.85rem; color: #6b7280; line-height: 1.6; }
+
+    #contact { background: var(--navy); color: var(--white); }
+    #contact .section-title { color: var(--white); }
+    .contact-wrap { display: grid; grid-template-columns: 1fr 1.4fr; gap: 72px; max-width: 1100px; margin: 0 auto; align-items: start; }
+    .contact-info h3 { font-size: 1.5rem; color: var(--gold); margin-bottom: 6px; }
+    .contact-slogan { font-style: italic; color: rgba(255,255,255,0.5); font-size: 0.92rem; margin-bottom: 22px; }
+    .contact-info p { color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 32px; }
+    .contact-detail { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+    .contact-icon { width: 40px; height: 40px; background: rgba(218,165,32,0.1); border: 1px solid rgba(218,165,32,0.3); display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 1rem; flex-shrink: 0; }
+    .contact-detail-text { font-family: 'Arial', sans-serif; font-size: 0.9rem; color: rgba(255,255,255,0.75); }
+    .contact-detail-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 2px; }
+    form { display: flex; flex-direction: column; gap: 18px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    form input, form textarea { width: 100%; padding: 14px 18px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: var(--white); font-family: 'Arial', sans-serif; font-size: 0.9rem; outline: none; transition: border-color 0.2s; }
+    form input::placeholder, form textarea::placeholder { color: rgba(255,255,255,0.35); }
+    form input:focus, form textarea:focus { border-color: var(--gold); }
+    form textarea { resize: vertical; min-height: 130px; }
+    form button { background: var(--gold); color: var(--navy); border: none; padding: 16px 40px; font-family: 'Arial', sans-serif; font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: bold; cursor: pointer; transition: background 0.2s, transform 0.2s; align-self: flex-start; }
+    form button:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+    footer { background: #060e1a; padding: 36px 48px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(218,165,32,0.2); flex-wrap: wrap; gap: 16px; }
+    .footer-logo { font-size: 1.1rem; font-weight: bold; color: var(--gold); letter-spacing: 0.08em; margin-bottom: 4px; }
+    .footer-logo span { color: rgba(255,255,255,0.5); }
+    .footer-tagline { font-size: 0.75rem; font-style: italic; color: rgba(255,255,255,0.3); }
+    .footer-copy { font-family: 'Arial', sans-serif; font-size: 0.78rem; color: rgba(255,255,255,0.3); }
+    .footer-links { display: flex; gap: 24px; list-style: none; }
+    .footer-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-family: 'Arial', sans-serif; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+
+    .scroll-top { position: fixed; bottom: 32px; right: 32px; width: 46px; height: 46px; background: var(--gold); color: var(--navy); border: none; cursor: pointer; font-size: 1.1rem; font-weight: bold; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s, transform 0.2s; z-index: 99; }
+    .scroll-top.visible { opacity: 1; }
+    .scroll-top:hover { transform: translateY(-3px); }
+
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      section { padding: 72px 24px; }
+      .about-grid, .contact-wrap { grid-template-columns: 1fr; gap: 40px; }
+      .about-img-wrap { max-width: 300px; margin: 0 auto; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { flex-direction: column; text-align: center; }
+      .hero-corner-tl, .hero-corner-br { display: none; }
+    }
+    @media (max-width: 600px) {
+  .portfolio-grid { grid-template-columns: 1fr; }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 68px; left: 0; right: 0;
+    background: var(--navy);
+    padding: 24px 32px;
+    gap: 20px;
+    border-bottom: 2px solid var(--gold);
+    z-index: 99;
+  }
+  .nav-links.open { display: flex; }
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px; height: 2px;
+    background: var(--gold);
+    transition: all 0.3s;
+  }
+}
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#home" class="nav-logo">
+    <img src="MA_logo_transparent.png" style="height: 60px; width: auto;" alt="Logo" />
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home" onclick="closeMenu()">Home</a></li>
+    <li><a href="#about" onclick="closeMenu()">About</a></li>
+    <li><a href="#portfolio" onclick="closeMenu()">Portfolio</a></li>
+    <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</nav>
+
+<section id="home">
+  <div class="hero-corner-tl"></div>
+  <div class="hero-corner-br"></div>
+  <div class="hero-inner">
+    <div class="hero-tag">Creative Professional</div>
+    <h1 class="hero-name">Marcus <span class="highlight">Holden</span></h1>
+    <div class="hero-subtitle">Graphic Designer &nbsp;·&nbsp; Digital Artist &nbsp;·&nbsp; Photographer</div>
+    <div class="hero-slogan">"Designing Experiences That Actually Work."</div>
+    <div class="hero-divider"></div>
+    <div class="hero-btns">
+      <a href="#portfolio" class="btn-primary">View My Work</a>
+      <a href="#contact" class="btn-outline">Get In Touch</a>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="about-grid">
+    <div class="about-img-wrap">
+      <div class="about-img-box" style="overflow: hidden; padding: 0;">
+  <img src="IMG_0651.JPG" 
+       alt="Marcus Holden" 
+       style="width: 100%; height: 100%; object-fit: cover; object-position: center top;" />
+</div>
+
+    </div>
+    <div class="about-text">
+      <div class="eyebrow">About Me</div>
+      <h2>Design With a Purpose</h2>
+      <div class="about-slogan">"Designing Experiences That Actually Work."</div>
+      <p>I'm Marcus Holden — a creative who believes design is only as good as the experience it creates. I don't just make things look good; I make them work better.</p>
+      <p>From brand identities to digital art, every decision I make starts with one question: does this actually serve the person using it? That mindset drives everything — the layouts, the color choices, the typography, all of it.</p>
+      <p>When I'm not designing, you'll find me studying what makes everyday experiences feel effortless — because the best design is the kind people never have to think about.</p>
+      <div class="about-skills">
+  <span class="skill-tag">UX Design</span>
+  <span class="skill-tag">UI Design</span>
+  <span class="skill-tag">User Research</span>
+  <span class="skill-tag">Wireframing</span>
+  <span class="skill-tag">Prototyping</span>
+  <span class="skill-tag">Typography</span>
+  <span class="skill-tag">Branding</span>
+  <span class="skill-tag">Photoshop</span>
+</div>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="section-header">
+    <div class="section-eyebrow">My Work</div>
+    <h2 class="section-title">Portfolio</h2>
+    <div class="section-rule"></div>
+  </div>
+  <div class="portfolio-tabs">
+  <button class="tab-btn active" onclick="filterPortfolio('all',this)">All</button>
+  <button class="tab-btn" onclick="filterPortfolio('ux-design',this)">UX Design</button>
+  <button class="tab-btn" onclick="filterPortfolio('ui-design',this)">UI Design</button>
+  <button class="tab-btn" onclick="filterPortfolio('graphic-design',this)">Graphic Design</button>
+  <button class="tab-btn" onclick="filterPortfolio('branding',this)">Branding</button>
+</div>
+  <div class="portfolio-grid">
+    <div class="portfolio-card card-accent-1" data-category="branding">
+  <div class="card-img"><div class="card-img-icon">◈</div></div>
+  <div class="card-body">
+    <div class="card-category">Branding</div>
+    <h3 class="card-title">Personal Identity System</h3>
+    <p class="card-desc">A cohesive brand built around UX principles — clear, intentional, and designed to communicate before a word is read.</p>
+  </div>
+</div>
+
+<div class="portfolio-card card-accent-2" data-category="ux-design">
+  <div class="card-img"><div class="card-img-icon">▣</div></div>
+  <div class="card-body">
+    <div class="card-category">UX Design</div>
+    <h3 class="card-title">User Flow Redesign</h3>
+    <p class="card-desc">Mapped and restructured a confusing user journey into a frictionless, intuitive experience from first click to final action.</p>
+  </div>
+</div>
+
+<div class="portfolio-card card-accent-3" data-category="ui-design" 
+     onclick="window.location='project-mobile-app.html'">
+  <div class="card-img" style="padding: 0; overflow: hidden;">
+  <img src="Frame 134.png" 
+       alt="Mobile App Interface" 
+       style="width: 100%; height: 100%; object-fit: cover;" />
+</div>
+  <div class="card-body">
+    <div class="card-category">UI Design</div>
+    <h3 class="card-title">Mobile App Interface</h3>
+    <p class="card-desc">Designed a clean, accessible mobile interface focused on reducing cognitive load and improving task completion rates.</p>
+    
+  </div>
+  
+</div>
+
+<div class="portfolio-card card-accent-4" data-category="ux-design">
+  <div class="card-img"><div class="card-img-icon">✦</div></div>
+  <div class="card-body">
+    <div class="card-category">UX Design</div>
+    <h3 class="card-title">Wireframe &amp; Prototype</h3>
+    <p class="card-desc">Low-to-high fidelity wireframes built around user research findings, tested and iterated before final handoff.</p>
+  </div>
+</div>
+
+<div class="portfolio-card card-accent-1" data-category="ui-design">
+  <div class="card-img"><div class="card-img-icon">◉</div></div>
+  <div class="card-body">
+    <div class="card-category">UI Design</div>
+    <h3 class="card-title">Design System &amp; Components</h3>
+    <p class="card-desc">Built a reusable component library ensuring visual consistency and faster development across a product suite.</p>
+  </div>
+</div>
+
+<div class="portfolio-card card-accent-2" data-category="graphic-design">
+  <div class="card-img"><div class="card-img-icon">◈</div></div>
+  <div class="card-body">
+    <div class="card-category">Graphic Design</div>
+    <h3 class="card-title">Digital Banner Series</h3>
+    <p class="card-desc">Website and social media banners designed with hierarchy and intent — every element earns its place.</p>
+  </div>
+</div>
+
+<div class="portfolio-card card-accent-3" data-category="ux-design">
+  <div class="card-img"><div class="card-img-icon">▲</div></div>
+  <div class="card-body">
+    <div class="card-category">UX Design</div>
+    <h3 class="card-title">User Research Study</h3>
+    <p class="card-desc">Conducted interviews and usability tests to uncover pain points, translating findings into actionable design decisions.</p>
+  </div>
+</div>
+
+<div class="portfolio-card card-accent-4" data-category="graphic-design">
+  <div class="card-img"><div class="card-img-icon">✦</div></div>
+  <div class="card-body">
+    <div class="card-category">Graphic Design</div>
+    <h3 class="card-title">Typography &amp; Layout</h3>
+    <p class="card-desc">Editorial layouts using typographic hierarchy to guide the reader's eye and communicate with clarity and purpose.</p>
+  </div>
+</div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-header">
+    <div class="section-eyebrow" style="color:var(--gold)">Let's Connect</div>
+    <h2 class="section-title">Get In Touch</h2>
+    <div class="section-rule"></div>
+  </div>
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <h3>I'd love to hear from you.</h3>
+      <div class="contact-slogan">"Designing Experiences That Actually Work."</div>
+      <p>Whether you have a project in mind, want to collaborate, or just want to say hello — my inbox is always open. Let's create something great together.</p>
+      <div class="contact-detail">
+        <div class="contact-icon">✉</div>
+        <div class="contact-detail-text"><div class="contact-detail-label">Email</div>marcusholden@email.com</div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon">◎</div>
+        <div class="contact-detail-text"><div class="contact-detail-label">Location</div>Available for Remote &amp; On-Site Projects</div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon">⬡</div>
+        <div class="contact-detail-text"><div class="contact-detail-label">LinkedIn</div>linkedin.com/in/marcusholden</div>
+      </div>
+    </div>
+    <form onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <input type="text" placeholder="First Name" required />
+        <input type="text" placeholder="Last Name" required />
+      </div>
+      <input type="email" placeholder="Email Address" required />
+      <input type="text" placeholder="Subject" />
+      <textarea placeholder="Your message..." required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="footer-logo">Marcus <span>Holden</span></div>
+    <div class="footer-tagline">Designing Experiences That Actually Work.</div>
+  </div>
+  <p class="footer-copy">© 2026 Marcus Holden. All rights reserved.</p>
+  <ul class="footer-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</footer>
+
+<button class="scroll-top" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('scrollTopBtn').classList.toggle('visible', window.scrollY > 400);
+  });
+  function filterPortfolio(category, btn) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.portfolio-card').forEach(card => {
+      card.style.display = (category === 'all' || card.dataset.category === category) ? '' : 'none';
+    });
+  }
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    btn.textContent = 'Message Sent ✓';
+    btn.style.background = '#4ade80';
+    btn.style.color = '#fff';
+    setTimeout(() => { btn.textContent = 'Send Message'; btn.style.background = ''; btn.style.color = ''; e.target.reset(); }, 3000);
+  }
+  function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('navLinks').classList.remove('open');
+}
+</script>
+</body>
+</html>
