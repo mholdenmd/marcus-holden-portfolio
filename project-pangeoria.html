@@ -65,8 +65,8 @@
     .meta-value { font-size: 0.95rem; color: var(--white); }
 
     /* ===== COVER ===== */
-    .project-cover { width: 100%; min-height: 280px; background: var(--navy-mid); display: flex; align-items: center; justify-content: center; overflow: hidden; text-align: center; padding: 32px; }
-    .project-cover img { width: 100%; height: 100%; object-fit: cover; cursor: zoom-in; }
+    .project-cover { width: 100%; min-height: 420px; background: linear-gradient(135deg, var(--p-blue), var(--p-teal)); display: flex; align-items: center; justify-content: center; overflow: hidden; text-align: center; padding: 48px; }
+    .project-cover img { max-width: 280px; width: 100%; height: auto; max-height: 380px; object-fit: contain; border-radius: 22px; box-shadow: 0 24px 60px rgba(0,0,0,0.35); cursor: zoom-in; }
     .project-cover-placeholder { color: rgba(255,193,0,0.35); font-size: 0.85rem; letter-spacing: 0.18em; text-transform: uppercase; line-height: 1.8; }
 
     /* ===== CONTENT ===== */
@@ -134,7 +134,8 @@
     /* Gallery / asset placeholders */
     .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin-top: 8px; }
     .gallery-item { aspect-ratio: 4/3; background: var(--navy-mid); display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; text-align: center; padding: 16px; }
-    .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; cursor: zoom-in; transition: transform 0.3s; }
+    .gallery-item img:hover { transform: scale(1.02); }
     .gallery-placeholder { color: rgba(255,193,0,0.35); font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.7; }
 
     /* Honesty / process notes */
@@ -233,8 +234,7 @@
 </div>
 
 <div class="project-cover">
-  <!-- Replace with hi-fi screen, demo still, or hero render once exported -->
-  <div class="project-cover-placeholder">Cover image pending<br />(hi-fi screens / demo footage to be added after May 27 demo)</div>
+  <img src="pangeoria-cover-phone.png" alt="Pangeoria splash screen — SCAD SERVE and Ronald McDonald House branding on the app start screen" onclick="openLightbox(this.src)" />
 </div>
 
 <div class="project-content">
@@ -362,21 +362,48 @@
     </div>
   </div>
 
+  <!-- PROTOTYPE CAPTURES -->
+  <div class="content-block">
+    <div class="content-block-label">Prototype</div>
+    <div class="gold-rule"></div>
+    <h2>Early Builds & Test Captures</h2>
+    <p>In-progress captures from the Unity build — development screenshots and test renders rather than final polished shots, shown here in the same spirit of process honesty as the rest of this case study.</p>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="pangeoria-splash-screen.png" alt="App splash screen with SCAD SERVE and Ronald McDonald House logos" onclick="openLightbox(this.src)" />
+      </div>
+      <div class="gallery-item">
+        <img src="pangeoria-quiz-screen.png" alt="Daily quiz screen, math theme — stealth learning mechanic" onclick="openLightbox(this.src)" />
+      </div>
+      <div class="gallery-item">
+        <img src="pangeoria-settings-screen.png" alt="Settings screen mockup with music, sound, captions, and vibration controls" onclick="openLightbox(this.src)" />
+      </div>
+      <div class="gallery-item">
+        <img src="pangeoria-flower-reward.png" alt="3D render of the free reward flower and pot asset" onclick="openLightbox(this.src)" />
+      </div>
+      <div class="gallery-item">
+        <img src="pangeoria-ar-companion-test.png" alt="Real-world AR test of the in-app companion creature placed in a physical room" onclick="openLightbox(this.src)" />
+      </div>
+      <div class="gallery-item">
+        <img src="pangeoria-companion-walkcycle.png" alt="In-engine walk-cycle test render of the AR companion creature" onclick="openLightbox(this.src)" />
+      </div>
+    </div>
+  </div>
+
   <!-- ASSETS PENDING -->
   <div class="content-block">
     <div class="content-block-label">Coming Soon</div>
     <div class="gold-rule"></div>
     <h2>Screens & Media</h2>
-    <p>The gallery below will be filled in with exported hi-fi screens, the persona graphic, the quest-flow diagram, photos/renders of Mother Oakeechee and the projection room, and demo video captured after the May 27 milestone.</p>
+    <p>Still to be added: the persona graphic, the quest-flow diagram, photos/renders of Mother Oakeechee and the projection room, and demo video captured after the May 27 milestone.</p>
     <div class="gallery-grid">
-      <div class="gallery-item"><div class="gallery-placeholder">Hi-Fi App Screens</div></div>
       <div class="gallery-item"><div class="gallery-placeholder">Quest-Flow Diagram</div></div>
       <div class="gallery-item"><div class="gallery-placeholder">Persona Graphic</div></div>
       <div class="gallery-item"><div class="gallery-placeholder">Mother Oakeechee</div></div>
       <div class="gallery-item"><div class="gallery-placeholder">Projection Room</div></div>
       <div class="gallery-item"><div class="gallery-placeholder">Demo Video</div></div>
     </div>
-    <div class="pending-note">Placeholder gallery — swap these tiles for real images/video as soon as they're exported. See the note at the end of this page for the exact asset list.</div>
+    <div class="pending-note">Placeholder gallery — swap these tiles for real images/video as soon as they're exported.</div>
   </div>
 
   <!-- VISUAL IDENTITY -->
