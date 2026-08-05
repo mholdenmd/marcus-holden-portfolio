@@ -136,6 +136,8 @@
     .gallery-item { aspect-ratio: 4/3; background: var(--navy-mid); display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; text-align: center; padding: 16px; }
     .gallery-item img { width: 100%; height: 100%; object-fit: cover; cursor: zoom-in; transition: transform 0.3s; }
     .gallery-item img:hover { transform: scale(1.02); }
+    .gallery-tile { display: flex; flex-direction: column; }
+    .gallery-caption { font-size: 0.78rem; color: #6b7280; margin-top: 8px; line-height: 1.5; }
     .gallery-placeholder { color: rgba(255,193,0,0.35); font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.7; }
 
     /* Honesty / process notes */
@@ -338,6 +340,10 @@
         <h4>Two-Track Rewards</h4>
         <p>A free flower is always available so no kid leaves empty-handed, alongside a ruby economy earned through gameplay for kids who want to push further.</p>
       </div>
+      <div class="feature-card">
+        <h4>Guide Character: Bob the Bobcat</h4>
+        <p>Bob is a pre-existing creature-partner asset from before I joined the project, which I repurposed as an in-app guide — leading kids to the day's quest location and giving the questing a story reason to exist, rather than just a checklist. The original vision was a full roster of creature partners; we scoped down to Bob alone for the demo.</p>
+      </div>
     </div>
     <p style="margin-top: 20px; font-size: 0.9rem; color: #8a8f98;">A desktop admin interface was scoped as a future stretch idea for House staff, not a current deliverable.</p>
   </div>
@@ -369,23 +375,41 @@
     <h2>Early Builds & Test Captures</h2>
     <p>In-progress captures from the Unity build — development screenshots and test renders rather than final polished shots, shown here in the same spirit of process honesty as the rest of this case study.</p>
     <div class="gallery-grid">
-      <div class="gallery-item">
-        <img src="pangeoria-splash-screen.png" alt="App splash screen with SCAD SERVE and Ronald McDonald House logos" onclick="openLightbox(this.src)" />
+      <div class="gallery-tile">
+        <div class="gallery-item">
+          <img src="pangeoria-splash-screen.png" alt="App splash screen with SCAD SERVE and Ronald McDonald House logos" onclick="openLightbox(this.src)" />
+        </div>
+        <div class="gallery-caption">Splash screen — SCAD SERVE × Ronald McDonald House</div>
       </div>
-      <div class="gallery-item">
-        <img src="pangeoria-quiz-screen.png" alt="Daily quiz screen, math theme — stealth learning mechanic" onclick="openLightbox(this.src)" />
+      <div class="gallery-tile">
+        <div class="gallery-item">
+          <img src="pangeoria-quiz-screen.png" alt="Daily quiz screen, math theme — stealth learning mechanic" onclick="openLightbox(this.src)" />
+        </div>
+        <div class="gallery-caption">Daily quiz screen — math theme (stealth learning)</div>
       </div>
-      <div class="gallery-item">
-        <img src="pangeoria-settings-screen.png" alt="Settings screen mockup with music, sound, captions, and vibration controls" onclick="openLightbox(this.src)" />
+      <div class="gallery-tile">
+        <div class="gallery-item">
+          <img src="pangeoria-settings-screen.png" alt="Settings screen mockup with music, sound, captions, and vibration controls" onclick="openLightbox(this.src)" />
+        </div>
+        <div class="gallery-caption">Settings screen</div>
       </div>
-      <div class="gallery-item">
-        <img src="pangeoria-flower-reward.png" alt="3D render of the free reward flower and pot asset" onclick="openLightbox(this.src)" />
+      <div class="gallery-tile">
+        <div class="gallery-item">
+          <img src="pangeoria-flower-reward.png" alt="3D render of the free reward flower and pot asset" onclick="openLightbox(this.src)" />
+        </div>
+        <div class="gallery-caption">Reward flower — 3D asset</div>
       </div>
-      <div class="gallery-item">
-        <img src="pangeoria-ar-companion-test.png" alt="Real-world AR test of the in-app companion creature placed in a physical room" onclick="openLightbox(this.src)" />
+      <div class="gallery-tile">
+        <div class="gallery-item">
+          <img src="pangeoria-ar-companion-test.png" alt="Real-world AR test of Bob the Bobcat, the in-app guide character, placed in a physical room" onclick="openLightbox(this.src)" />
+        </div>
+        <div class="gallery-caption">Bob the Bobcat — real-world AR test</div>
       </div>
-      <div class="gallery-item">
-        <img src="pangeoria-companion-walkcycle.png" alt="In-engine walk-cycle test render of the AR companion creature" onclick="openLightbox(this.src)" />
+      <div class="gallery-tile">
+        <div class="gallery-item">
+          <img src="pangeoria-companion-walkcycle.png" alt="In-engine walk-cycle test render of Bob the Bobcat, the in-app guide character" onclick="openLightbox(this.src)" />
+        </div>
+        <div class="gallery-caption">Bob the Bobcat — walk-cycle test (in-engine)</div>
       </div>
     </div>
   </div>
