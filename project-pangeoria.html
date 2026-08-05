@@ -66,7 +66,7 @@
 
     /* ===== COVER ===== */
     .project-cover { width: 100%; min-height: 420px; background: linear-gradient(135deg, var(--p-blue), var(--p-teal)); display: flex; align-items: center; justify-content: center; overflow: hidden; text-align: center; padding: 48px; }
-    .project-cover img { max-width: 280px; width: 100%; height: auto; max-height: 380px; object-fit: contain; border-radius: 22px; box-shadow: 0 24px 60px rgba(0,0,0,0.35); cursor: zoom-in; }
+    .project-cover img { max-width: 320px; width: 100%; height: auto; max-height: 400px; object-fit: contain; border-radius: 22px; box-shadow: 0 24px 60px rgba(0,0,0,0.35); cursor: zoom-in; }
     .project-cover-placeholder { color: rgba(255,193,0,0.35); font-size: 0.85rem; letter-spacing: 0.18em; text-transform: uppercase; line-height: 1.8; }
 
     /* ===== CONTENT ===== */
@@ -236,7 +236,7 @@
 </div>
 
 <div class="project-cover">
-  <img src="pangeoria-cover-phone.png" alt="Pangeoria splash screen — SCAD SERVE and Ronald McDonald House branding on the app start screen" onclick="openLightbox(this.src)" />
+  <img src="pangeoria-figma-splash.png" alt="Pangeoria splash screen — SCAD SERVE and Ronald McDonald House branding, from the Figma UX prototype" onclick="openLightbox(this.src)" />
 </div>
 
 <div class="project-content">
@@ -338,7 +338,7 @@
       </div>
       <div class="feature-card">
         <h4>Two-Track Rewards</h4>
-        <p>A free flower is always available so no kid leaves empty-handed, alongside a ruby economy earned through gameplay for kids who want to push further.</p>
+        <p>A free flower is always available so no kid leaves empty-handed, alongside diamonds earned through correct answers that can be spent in an in-app Shop on decorative pots for the flower.</p>
       </div>
       <div class="feature-card">
         <h4>Guide Character: Bob the Bobcat</h4>
@@ -370,10 +370,10 @@
 
   <!-- PROTOTYPE CAPTURES -->
   <div class="content-block">
-    <div class="content-block-label">Prototype</div>
+    <div class="content-block-label">Prototype — Game Dev Team</div>
     <div class="gold-rule"></div>
     <h2>Early Builds & Test Captures</h2>
-    <p>In-progress captures from the Unity build — development screenshots and test renders rather than final polished shots, shown here in the same spirit of process honesty as the rest of this case study.</p>
+    <p>In-progress captures from the Unity build itself, taken by the development team — screenshots and test renders rather than final polished shots, shown here in the same spirit of process honesty as the rest of this case study.</p>
     <div class="gallery-grid">
       <div class="gallery-tile">
         <div class="gallery-item">
@@ -412,6 +412,65 @@
         <div class="gallery-caption">Bob the Bobcat — walk-cycle test (in-engine)</div>
       </div>
     </div>
+  </div>
+
+  <!-- FIGMA UX PROTOTYPE -->
+  <div class="content-block">
+    <div class="content-block-label">UX Design — UX Team</div>
+    <div class="gold-rule"></div>
+    <h2>Figma Prototype Flow</h2>
+    <p>These come from the UX team's Figma file rather than the game-dev build above — the designed hi-fi flow: onboarding, Bobby's introduction, the tutorial, the AR quiz loop, settings, and the reward shop.</p>
+    <div class="gallery-grid">
+      <div class="gallery-tile">
+        <div class="gallery-item">
+          <img src="pangeoria-figma-onboarding.png" alt="Onboarding screen asking the player's first name, filled in with the persona name Leon" onclick="openLightbox(this.src)" />
+        </div>
+        <div class="gallery-caption">Onboarding — name entry</div>
+      </div>
+      <div class="gallery-tile">
+        <div class="gallery-item">
+          <img src="pangeoria-figma-bobby-intro.png" alt="Introduction card: I'm Bobby the Bobcat, your guide today" onclick="openLightbox(this.src)" />
+        </div>
+        <div class="gallery-caption">Meet Bobby the Bobcat — guide introduction</div>
+      </div>
+      <div class="gallery-tile">
+        <div class="gallery-item">
+          <img src="pangeoria-figma-how-to-play.png" alt="How to play tutorial card explaining the scan-to-answer mechanic" onclick="openLightbox(this.src)" />
+        </div>
+        <div class="gallery-caption">How to Play — tutorial card</div>
+      </div>
+      <div class="gallery-tile">
+        <div class="gallery-item">
+          <img src="pangeoria-figma-quiz-question.png" alt="AR quiz question overlaid on a real RMHC Atlanta room, with a floating answer bubble" onclick="openLightbox(this.src)" />
+        </div>
+        <div class="gallery-caption">AR quiz in progress — floating answer bubble</div>
+      </div>
+      <div class="gallery-tile">
+        <div class="gallery-item">
+          <img src="pangeoria-figma-reward-claim.png" alt="Correct answer claimed for 100 diamonds, with Bobby the Bobcat visible near a real archway inside RMHC Atlanta" onclick="openLightbox(this.src)" />
+        </div>
+        <div class="gallery-caption">Reward claimed — Bobby beside the real archway</div>
+      </div>
+      <div class="gallery-tile">
+        <div class="gallery-item">
+          <img src="pangeoria-figma-settings.png" alt="Settings screen with music, sound, captions, vibration, text size, brightness, high contrast mode, and boundary mode controls" onclick="openLightbox(this.src)" />
+        </div>
+        <div class="gallery-caption">Settings — accessibility controls</div>
+      </div>
+      <div class="gallery-tile">
+        <div class="gallery-item">
+          <img src="pangeoria-figma-shop.png" alt="The Shop screen where diamonds are spent on decorative flower pots" onclick="openLightbox(this.src)" />
+        </div>
+        <div class="gallery-caption">The Shop — spending diamonds on pots</div>
+      </div>
+      <div class="gallery-tile">
+        <div class="gallery-item">
+          <img src="pangeoria-figma-rollins-healing-tree.png" alt="Real photo of The Rollins Healing Tree installation inside RMHC Atlanta, captured during an AR test" onclick="openLightbox(this.src)" />
+        </div>
+        <div class="gallery-caption">The Rollins Healing Tree — real installation at RMHC Atlanta</div>
+      </div>
+    </div>
+    <div class="honesty-note">The settings screen also surfaces real accessibility work not covered elsewhere in this case study: adjustable text size, brightness, high-contrast mode, closed captions, vibration toggles, and a boundary mode — concrete evidence of the "Restored Experience" pillar beyond the headline mechanics.</div>
   </div>
 
   <!-- ASSETS PENDING -->
