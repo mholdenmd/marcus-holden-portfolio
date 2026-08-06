@@ -310,12 +310,12 @@
     </div>
     <form onsubmit="handleSubmit(event)">
       <div class="form-row">
-        <input type="text" placeholder="First Name" required />
-        <input type="text" placeholder="Last Name" required />
+        <input type="text" id="contactFirstName" placeholder="First Name" required />
+        <input type="text" id="contactLastName" placeholder="Last Name" required />
       </div>
-      <input type="email" placeholder="Email Address" required />
-      <input type="text" placeholder="Subject" />
-      <textarea placeholder="Your message..." required></textarea>
+      <input type="email" id="contactEmail" placeholder="Email Address" required />
+      <input type="text" id="contactSubject" placeholder="Subject" />
+      <textarea id="contactMessage" placeholder="Your message..." required></textarea>
       <button type="submit">Send Message</button>
     </form>
   </div>
@@ -350,11 +350,24 @@
   }
   function handleSubmit(e) {
     e.preventDefault();
-    const btn = e.target.querySelector('button');
-    btn.textContent = 'Message Sent ✓';
+    const form = e.target;
+    const firstName = document.getElementById('contactFirstName').value;
+    const lastName = document.getElementById('contactLastName').value;
+    const fromEmail = document.getElementById('contactEmail').value;
+    const subjectInput = document.getElementById('contactSubject').value;
+    const message = document.getElementById('contactMessage').value;
+
+    const subject = subjectInput || `New message from ${firstName} ${lastName} via portfolio site`;
+    const body = `Name: ${firstName} ${lastName}\nEmail: ${fromEmail}\n\n${message}`;
+    const mailtoLink = `mailto:mholdenmd@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    window.location.href = mailtoLink;
+
+    const btn = form.querySelector('button');
+    btn.textContent = 'Opening Your Email App...';
     btn.style.background = '#4ade80';
     btn.style.color = '#fff';
-    setTimeout(() => { btn.textContent = 'Send Message'; btn.style.background = ''; btn.style.color = ''; e.target.reset(); }, 3000);
+    setTimeout(() => { btn.textContent = 'Send Message'; btn.style.background = ''; btn.style.color = ''; form.reset(); }, 3000);
   }
   function toggleMenu() {
     document.getElementById('navLinks').classList.toggle('open');
