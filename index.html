@@ -30,6 +30,7 @@
     .nav-links { display: flex; gap: 32px; list-style: none; }
     .nav-links a { color: var(--white); text-decoration: none; font-size: 0.88rem; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
     .nav-links a:hover { color: var(--gold); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
 
     #home {
       min-height: 100vh;
@@ -166,7 +167,7 @@
   <div class="hero-inner">
     <div class="hero-tag">Creative Professional</div>
     <h1 class="hero-name">Marcus <span class="highlight">Holden</span></h1>
-    <div class="hero-subtitle">Graphic Designer &nbsp;·&nbsp; Digital Artist &nbsp;·&nbsp; Illustrator</div>
+    <div class="hero-subtitle">UX Experience Designer &nbsp;·&nbsp; Digital Artist &nbsp;·&nbsp; Illustrator</div>
     <div class="hero-slogan">"Designing Experiences That Actually Work."</div>
     <div class="hero-divider"></div>
     <div class="hero-btns">
@@ -187,9 +188,9 @@
       <div class="eyebrow">About Me</div>
       <h2>Design With a Purpose</h2>
       <div class="about-slogan">"Designing Experiences That Actually Work."</div>
-      <p>I'm Marcus Holden — a creative who believes design is only as good as the experience it creates. I don't just make things look good; I make them work better.</p>
-      <p>From brand identities to digital art, every decision I make starts with one question: does this actually serve the person using it? That mindset drives everything — the layouts, the color choices, the typography, all of it.</p>
-      <p>When I'm not designing, you'll find me studying what makes everyday experiences feel effortless — because the best design is the kind people never have to think about.</p>
+      <p>I'm Marcus Holden — a UX experience designer who cares most about how a person actually moves through what I build, not just how it looks. Research and understanding the user come first; the visuals follow from that.</p>
+      <p>Every project starts with the same question: what is this person trying to do, and where's the friction? User research, personas, and testing shape the decisions long before a wireframe or a final screen shows up. Illustration, branding, and digital art are things I love and do well — but they're in service of the experience, not a substitute for it.</p>
+      <p>When I'm not deep in a UX process, you'll find me sketching or making digital art — though even there, I'm usually still thinking about how someone will experience it.</p>
       <div class="about-skills">
         <span class="skill-tag">UX Design</span>
         <span class="skill-tag">UI Design</span>
@@ -216,10 +217,21 @@
     <button class="tab-btn" onclick="filterPortfolio('ux-design',this)">UX Design</button>
     <button class="tab-btn" onclick="filterPortfolio('graphic-design',this)">Graphic Design</button>
     <button class="tab-btn" onclick="filterPortfolio('drawing',this)">Drawing</button>
-    <button class="tab-btn" onclick="filterPortfolio('branding',this)">Branding</button>
   </div>
 
   <div class="portfolio-grid">
+
+    <!-- Pangeoria — SCAD SERVE capstone, flagship project -->
+    <div class="portfolio-card" data-category="ux-design" onclick="window.location='project-pangeoria.html'">
+      <div class="card-img" style="padding: 0; overflow: hidden;">
+        <img src="pangeoria-title-slide.png" alt="Pangeoria Project — SCAD SERVE x Ronald McDonald House Atlanta" style="width: 100%; height: 100%; object-fit: cover;" />
+      </div>
+      <div class="card-body" style="border-top: 2px solid #FFC100;">
+        <div class="card-category" style="color:#FFC100;">UX Design · AR / Immersive</div>
+        <h3 class="card-title">Pangeoria</h3>
+        <p class="card-desc">An immersive AR experience system for kids at Ronald McDonald House Charities Atlanta — movement-based quests and play as dignity-restoring design. SCAD SERVE capstone.</p>
+      </div>
+    </div>
 
     <!-- Mobile App Interface -->
     <div class="portfolio-card card-accent-3" data-category="ui-design" onclick="window.location='project-mobile-app.html'">
@@ -266,46 +278,6 @@
         <div class="card-category">Drawing</div>
         <h3 class="card-title">Texture Portrait</h3>
         <p class="card-desc">A portrait drawing combining facial features with textures and patterns — a work in progress showcasing rendering and shading skills.</p>
-      </div>
-    </div>
-
-    <!-- User Flow Redesign -->
-    <div class="portfolio-card card-accent-2" data-category="ux-design">
-      <div class="card-img"><div class="card-img-icon">▣</div></div>
-      <div class="card-body">
-        <div class="card-category">UX Design</div>
-        <h3 class="card-title">User Flow Redesign</h3>
-        <p class="card-desc">Mapped and restructured a confusing user journey into a frictionless, intuitive experience from first click to final action.</p>
-      </div>
-    </div>
-
-    <!-- Wireframe & Prototype -->
-    <div class="portfolio-card card-accent-4" data-category="ux-design">
-      <div class="card-img"><div class="card-img-icon">✦</div></div>
-      <div class="card-body">
-        <div class="card-category">UX Design</div>
-        <h3 class="card-title">Wireframe &amp; Prototype</h3>
-        <p class="card-desc">Low-to-high fidelity wireframes built around user research findings, tested and iterated before final handoff.</p>
-      </div>
-    </div>
-
-    <!-- Design System -->
-    <div class="portfolio-card card-accent-1" data-category="ui-design">
-      <div class="card-img"><div class="card-img-icon">◉</div></div>
-      <div class="card-body">
-        <div class="card-category">UI Design</div>
-        <h3 class="card-title">Design System &amp; Components</h3>
-        <p class="card-desc">Built a reusable component library ensuring visual consistency and faster development across a product suite.</p>
-      </div>
-    </div>
-
-    <!-- Personal Identity System -->
-    <div class="portfolio-card card-accent-1" data-category="branding">
-      <div class="card-img"><div class="card-img-icon">◈</div></div>
-      <div class="card-body">
-        <div class="card-category">Branding</div>
-        <h3 class="card-title">Personal Identity System</h3>
-        <p class="card-desc">A cohesive brand built around UX principles — clear, intentional, and designed to communicate before a word is read.</p>
       </div>
     </div>
 
