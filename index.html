@@ -14,6 +14,10 @@
       --gold-light: #f0c040;
       --white: #ffffff;
       --off-white: #f8f8f4;
+      /* Dream → Reality: imaginative violet cooling into precise navy, gold as the constant spark */
+      --dream-deep: #150e2e;
+      --dream-mid: #2c1a52;
+      --dream-glow: #6b3fa0;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -34,15 +38,20 @@
 
     #home {
       min-height: 100vh;
-      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, var(--navy-light) 100%);
+      background: linear-gradient(155deg, var(--dream-deep) 0%, var(--dream-mid) 30%, var(--navy-mid) 66%, var(--navy-light) 100%);
       display: flex; align-items: center; justify-content: center;
       position: relative; overflow: hidden; padding-top: 80px;
     }
     #home::before { content: ''; position: absolute; width: 700px; height: 700px; border-radius: 50%; border: 1px solid rgba(218,165,32,0.1); top: -150px; right: -200px; }
     #home::after { content: ''; position: absolute; width: 450px; height: 450px; border-radius: 50%; border: 1px solid rgba(218,165,32,0.07); bottom: -100px; left: -120px; }
+    /* Starfield: scattered "ideas" — the dream. Same field reused (dimmer) in Contact as "a new idea starts here" */
+    .starfield { position: absolute; inset: 0; overflow: hidden; z-index: 1; pointer-events: none; }
+    .star { position: absolute; border-radius: 50%; background: var(--gold-light); box-shadow: 0 0 6px 1px rgba(240,192,64,0.65); animation: twinkle 4s ease-in-out infinite; }
+    @keyframes twinkle { 0%, 100% { opacity: 0.12; } 50% { opacity: 0.85; } }
     .hero-corner-tl, .hero-corner-br { position: absolute; width: 80px; height: 80px; z-index: 2; }
     .hero-corner-tl { top: 90px; left: 48px; border-top: 2px solid var(--gold); border-left: 2px solid var(--gold); opacity: 0.4; }
     .hero-corner-br { bottom: 48px; right: 48px; border-bottom: 2px solid var(--gold); border-right: 2px solid var(--gold); opacity: 0.4; }
+    .hero-wave { position: absolute; bottom: -1px; left: 0; width: 100%; height: 90px; z-index: 2; display: block; }
     .hero-inner { text-align: center; z-index: 2; padding: 60px 24px; }
     .hero-tag { display: inline-block; font-size: 0.78rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold); padding: 6px 20px; margin-bottom: 28px; }
     .hero-name { font-size: clamp(3rem, 8vw, 6.5rem); color: var(--white); line-height: 1.05; margin-bottom: 8px; }
@@ -65,6 +74,7 @@
     #about { background: var(--white); }
     .about-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 72px; max-width: 1100px; margin: 0 auto; align-items: center; }
     .about-img-wrap { position: relative; }
+    .about-img-wrap::before { content: ''; position: absolute; inset: -34px; background: radial-gradient(circle, rgba(107,63,160,0.16), transparent 70%); z-index: 0; }
     .about-img-box { width: 100%; aspect-ratio: 3/4; background: var(--navy-mid); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
     .about-img-box::after { content: ''; position: absolute; bottom: -14px; right: -14px; width: 100%; height: 100%; border: 2px solid var(--gold); z-index: 0; pointer-events: none; }
     .about-img-initials { font-size: 5rem; font-family: 'Georgia', serif; color: rgba(218,165,32,0.35); font-weight: bold; position: relative; z-index: 1; }
@@ -75,7 +85,8 @@
     .about-skills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
     .skill-tag { background: var(--navy); color: var(--gold); padding: 7px 16px; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; }
 
-    #portfolio { background: var(--off-white); }
+    /* Blueprint grid: the idea now has structure — reality is precise, built, engineered */
+    #portfolio { background: var(--off-white); background-image: linear-gradient(rgba(10,22,40,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(10,22,40,0.04) 1px, transparent 1px); background-size: 44px 44px; }
     .portfolio-tabs { display: flex; justify-content: center; margin-bottom: 56px; flex-wrap: wrap; gap: 4px; }
     .tab-btn { padding: 12px 28px; background: none; border: 1.5px solid var(--navy); color: var(--navy); font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; }
     .tab-btn.active, .tab-btn:hover { background: var(--navy); color: var(--gold); }
@@ -93,7 +104,9 @@
     .card-title { font-size: 1.05rem; color: var(--navy); margin-bottom: 8px; }
     .card-desc { font-size: 0.85rem; color: #6b7280; line-height: 1.6; }
 
-    #contact { background: var(--navy); color: var(--white); }
+    #contact { background: var(--navy); color: var(--white); position: relative; overflow: hidden; }
+    #contact .starfield .star { animation-duration: 5s; }
+    #contact .section-header, #contact .contact-wrap { position: relative; z-index: 2; }
     #contact .section-title { color: var(--white); }
     .contact-wrap { display: grid; grid-template-columns: 1fr 1.4fr; gap: 72px; max-width: 1100px; margin: 0 auto; align-items: start; }
     .contact-info h3 { font-size: 1.5rem; color: var(--gold); margin-bottom: 6px; }
@@ -120,6 +133,9 @@
     .footer-links { display: flex; gap: 24px; list-style: none; }
     .footer-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
     .footer-links a:hover { color: var(--gold); }
+
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.in-view { opacity: 1; transform: translateY(0); }
 
     .scroll-top { position: fixed; bottom: 32px; right: 32px; width: 46px; height: 46px; background: var(--gold); color: var(--navy); border: none; cursor: pointer; font-size: 1.1rem; font-weight: bold; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s, transform 0.2s; z-index: 99; }
     .scroll-top.visible { opacity: 1; }
@@ -162,10 +178,11 @@
 </nav>
 
 <section id="home">
+  <div class="starfield" id="heroStarfield"></div>
   <div class="hero-corner-tl"></div>
   <div class="hero-corner-br"></div>
   <div class="hero-inner">
-    <div class="hero-tag">Creative Professional</div>
+    <div class="hero-tag">Idea &nbsp;→&nbsp; Reality</div>
     <h1 class="hero-name">Marcus <span class="highlight">Holden</span></h1>
     <div class="hero-subtitle">UX Experience Designer &nbsp;·&nbsp; Digital Artist &nbsp;·&nbsp; Illustrator</div>
     <div class="hero-slogan">"Designing Experiences That Actually Work."</div>
@@ -175,16 +192,19 @@
       <a href="#contact" class="btn-outline">Get In Touch</a>
     </div>
   </div>
+  <svg class="hero-wave" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,32 C240,80 480,0 720,24 C960,48 1200,88 1440,40 L1440,80 L0,80 Z" fill="#ffffff"></path>
+  </svg>
 </section>
 
 <section id="about">
   <div class="about-grid">
-    <div class="about-img-wrap">
+    <div class="about-img-wrap reveal">
       <div class="about-img-box" style="overflow: hidden; padding: 0;">
         <img src="IMG_0651.JPG" alt="Marcus Holden" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;" />
       </div>
     </div>
-    <div class="about-text">
+    <div class="about-text reveal">
       <div class="eyebrow">About Me</div>
       <h2>Design With a Purpose</h2>
       <div class="about-slogan">"Designing Experiences That Actually Work."</div>
@@ -206,7 +226,7 @@
 </section>
 
 <section id="portfolio">
-  <div class="section-header">
+  <div class="section-header reveal">
     <div class="section-eyebrow">My Work</div>
     <h2 class="section-title">Portfolio</h2>
     <div class="section-rule"></div>
@@ -285,13 +305,14 @@
 </section>
 
 <section id="contact">
-  <div class="section-header">
+  <div class="starfield" id="contactStarfield"></div>
+  <div class="section-header reveal">
     <div class="section-eyebrow" style="color:var(--gold)">Let's Connect</div>
     <h2 class="section-title">Get In Touch</h2>
     <div class="section-rule"></div>
   </div>
   <div class="contact-wrap">
-    <div class="contact-info">
+    <div class="contact-info reveal">
       <h3>I'd love to hear from you.</h3>
       <div class="contact-slogan">"Designing Experiences That Actually Work."</div>
       <p>Whether you have a project in mind, want to collaborate, or just want to say hello — my inbox is always open. Let's create something great together.</p>
@@ -308,7 +329,7 @@
         <div class="contact-detail-text"><div class="contact-detail-label">LinkedIn</div><a href="https://www.linkedin.com/in/marcusholden-thedesigner/" target="_blank" style="color: rgba(255,255,255,0.75); text-decoration: none;">linkedin.com/in/marcusholden-thedesigner</a></div>
       </div>
     </div>
-    <form onsubmit="handleSubmit(event)">
+    <form onsubmit="handleSubmit(event)" class="reveal">
       <div class="form-row">
         <input type="text" id="contactFirstName" placeholder="First Name" required />
         <input type="text" id="contactLastName" placeholder="Last Name" required />
@@ -341,6 +362,36 @@
   window.addEventListener('scroll', () => {
     document.getElementById('scrollTopBtn').classList.toggle('visible', window.scrollY > 400);
   });
+
+  // Starfield: scattered "ideas" in the dream-state hero, echoed faintly in Contact
+  function createStarfield(containerId, count) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    for (let i = 0; i < count; i++) {
+      const star = document.createElement('span');
+      star.className = 'star';
+      const size = Math.random() * 2.5 + 1.5;
+      star.style.width = size + 'px';
+      star.style.height = size + 'px';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.top = Math.random() * 100 + '%';
+      star.style.animationDelay = (Math.random() * 4) + 's';
+      container.appendChild(star);
+    }
+  }
+  createStarfield('heroStarfield', 45);
+  createStarfield('contactStarfield', 24);
+
+  // Scroll-reveal: content settles into place as the idea becomes real
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
   function filterPortfolio(category, btn) {
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
